@@ -1,0 +1,26 @@
+
+Size driven (bigger stones wide radius, smaller stone small radius)
+
+Texture driven (smooth low , rough high )
+
+Color driven (this specific color if found, higher, based on rgb)
+
+Density driven ( the circle thicker as its denser, normal weight normal outline, less dense thin outline)
+
+
+
+look redo: based on size, the radius of the ellipse becomes larger or smaller. based on texture driven, if its smooth it stays low, if its rough it goes high noise. based on color, if its this specific color, then the ellipse becomes a color, how about this?
+lemme rephrase, x = days, y = textures, radius = size, fill = color of the stone. no noise, when i meant by noise it means whether the circle is up or down, so it will look like a no correlation graph ngl.
+
+
+
+
+
+
+
+
+
+
+stone
+numberType of colourSize
+(diameter)textureProbable type of the stoneWhen found1Dark red purple stone9cmDense and smoothRed jasper or iron rhyolite10/oct2Large white stone16cmHard and smoothQuartz 10/oct3Tall dark green stone16cmFine grainedBasalt10/oct4Grey stone11cmGrainy texturegranite10/oct5Large white stone with brown banding 25cmSmooth and cooljasper10/oct6Solid white stone20cmCool slightly waxyCalcite or quartz10/oct7Light grey stone18cmWarmer feelingGranite10/oct8Solid white stone20cmSlightly waxyCalcite10/oct9Dark grey stone15cmRough feelingGabbro or granite10/oct10Reddish brown stone9cmDense and smoothRed jasper10/oct11Solid white stone19cmCool slightly waxyCalcite11/oct12Beige tan stone6cmWarm and less densesandstone11/oct13Grey stone 4cmSmooth and roundRiver pebble11/oct14Large grey stone22cmRough feelingBeach Pebble11/oct15White stone12cmDense but smoothMarble pebble11/oct
