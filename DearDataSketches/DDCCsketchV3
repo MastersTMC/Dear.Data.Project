@@ -1,0 +1,90 @@
+ArrayList<Stone> stones = new ArrayList<>(100);
+
+void setup() {
+  size(1000,400);
+  surface.setTitle("Stones!");
+size(1050,400);
+// testing before dear data deployed
+stones.add(new Stone(1, "red", 20, "hard", "red jasper"));
+stones.add(new Stone(2, "white", 20, "waxy", "quartz"));
+stones.add(new Stone(10, "red", 20, "hard", "red jasper"));
+stones.add(new Stone(20, "red", 20, "smooth", "red jasper"));
+stones.add(new Stone(30, "red", 20, "jagged", "red jasper"));
+stones.add(new Stone(40, "red", 20, "smooth", "red jasper"));
+stones.add(new Stone(50, "red", 20, "smooth", "red jasper"));
+stones.add(new Stone(60, "red", 20, "hard", "red jasper"));
+stones.add(new Stone(70, "red", 20, "round", "red jasper"));
+stones.add(new Stone(80, "red", 20, "waxy", "red jasper"));
+stones.add(new Stone(90, "red", 20, "round", "red jasper"));
+stones.add(new Stone(100, "black", 20 , "smooth", "wowie"));
+
+
+  /*
+  dear data 5.0 will be ready once all data is full, 
+  clean scaled, txt,and simple
+
+  String[] dearDataLines = loadStrings("DearData5.0A.md");
+  for (String e : dearDataLines) {
+    String[] datasplit = e.split(",");
+    stones.add(new Stone(int(datasplit[0]), datasplit[1], int(datasplit[2]), datasplit[3], datasplit[4]));
+    
+  }
+  
+  possibly split mechanism fail?
+  if fail not sure if ArrayList strategy is acceptable 
+  if acceptable deploy ArrayList 
+*/
+}
+
+void draw() {
+  background(255);
+  int barWidth = 10;
+  
+  for(Stone s : stones) {  
+    int x = s.getNumber() * 10;
+    int barHeight = s.getSize() * 5;
+    int y = (300 - (getTextureY(s.getTexture()) * 30)) + (int)random(-15,15);
+    fill(getColorEllipse(s.getStoneColor()));
+    rect(x,y, barWidth, barHeight);
+    noLoop();
+  }
+}
+
+
+public color getColorEllipse(String stoneColor) {
+    if(stoneColor.equals("black")) return color(0,0,0);
+    if(stoneColor.equals("grey")) return color(125,125,125);
+    if(stoneColor.equals("white")) return color(255,255,255);
+    if(stoneColor.equals("brown")) return color(0,0,0);
+    if(stoneColor.equals("red")) return color(255,0,0);
+    if(stoneColor.equals("orange")) return color(0,0,0);
+    if(stoneColor.equals("yellow")) return color(0,0,0);
+    if(stoneColor.equals("green")) return color(0,0,0);
+    if(stoneColor.equals("blue")) return color(0,0,0);
+    if(stoneColor.equals("pink")) return color(0,0,0);
+    if(stoneColor.equals("purple")) return color(0,0,0);
+    if(stoneColor.equals("grey")) return color(0,0,0);
+    if(stoneColor.equals("grey")) return color(0,0,0);
+    if(stoneColor.equals("grey")) return color(0,0,0);
+    if(stoneColor.equals("grey")) return color(0,0,0);
+    if(stoneColor.equals("grey")) return color(0,0,0);
+    if(stoneColor.equals("grey")) return color(0,0,0);
+    if(stoneColor.equals("grey")) return color(0,0,0);
+    if(stoneColor.equals("grey")) return color(0,0,0);
+    if(stoneColor.equals("grey")) return color(0,0,0);
+    if(stoneColor.equals("grey")) return color(0,0,0);
+
+    else return color(128, 128, 128);
+  }
+  
+  
+    public int getTextureY(String texture) {
+if(texture.equals("smooth")) return 7;
+if(texture.equals("round")) return 6;
+if(texture.equals("waxy")) return 5;
+if(texture.equals("grainy")) return 4;
+if(texture.equals("rough")) return 3;
+if(texture.equals("jagged")) return 2;
+if(texture.equals("hard")) return 1;
+else return 4;
+  }
