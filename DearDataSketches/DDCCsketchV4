@@ -1,0 +1,117 @@
+import java.util.ArrayList;
+
+class Stone {
+  public int number;
+  public String stoneColor;
+  public int size;
+  public String texture;
+  public String name;
+  
+  public Stone(int number, String stoneColor, int size, String texture, String name) {
+    this.number = number;
+    this.stoneColor = stoneColor;
+   this.size = size;
+   this.texture = texture;
+   this.name = name;
+  }
+  
+  public int getNumber() { 
+    return number;
+  }
+  public String getStoneColor() {
+    return stoneColor;
+  }
+   public int getSize() {
+    return size;
+  }
+  public String getTexture() {
+    return texture;
+  }
+  public String getName() {
+    return name;
+  }
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+ArrayList<Stone> stones = new ArrayList<>(100);
+
+void setup() {
+  size(1000,400);
+  surface.setTitle("Stones!");
+size(1050,400);
+
+
+  String[] dearDataLines = loadStrings("DearData5.0.md");
+  for (String e : dearDataLines) {
+  if(e.trim().length() == 0) continue;
+  String[] dataSplit = e.split(",");
+  if(dataSplit.length < 5) continue;
+  stones.add(new Stone(
+  int(dataSplit[0].trim()), dataSplit[1].trim(), int(dataSplit[2].trim()), dataSplit[3].trim(), dataSplit[4].trim()));
+  
+  }
+ 
+}
+
+void draw() {
+  background(255);
+  int barWidth = 10;
+  
+  for(Stone s : stones) {  
+    int x = s.getNumber() * 10;
+    int barHeight = s.getSize() * 5;
+    int y = (300 - (getTextureY(s.getTexture()) * 30)) + (int)random(-15,15);
+    fill(getColorEllipse(s.getStoneColor()), 150);
+    ellipse(x,y, barHeight /2, barHeight /2);
+    noLoop();
+  }
+}
+
+
+public color getColorEllipse(String stoneColor) {
+    if(stoneColor.equals("black")) return color(0,0,0);
+    if(stoneColor.equals("grey")) return color(125,125,125);
+    if(stoneColor.equals("white")) return color(255,255,255);
+    if(stoneColor.equals("brown")) return color(0,0,0);
+    if(stoneColor.equals("red")) return color(255,0,0);
+    if(stoneColor.equals("orange")) return color(0,0,0);
+    if(stoneColor.equals("yellow")) return color(0,0,0);
+    if(stoneColor.equals("green")) return color(0,0,0);
+    if(stoneColor.equals("blue")) return color(0,0,0);
+    if(stoneColor.equals("pink")) return color(0,0,0);
+    if(stoneColor.equals("purple")) return color(0,0,0);
+    if(stoneColor.equals("grey")) return color(0,0,0);
+    if(stoneColor.equals("grey")) return color(0,0,0);
+    if(stoneColor.equals("grey")) return color(0,0,0);
+    if(stoneColor.equals("grey")) return color(0,0,0);
+    if(stoneColor.equals("grey")) return color(0,0,0);
+    if(stoneColor.equals("grey")) return color(0,0,0);
+    if(stoneColor.equals("grey")) return color(0,0,0);
+    if(stoneColor.equals("grey")) return color(0,0,0);
+    if(stoneColor.equals("grey")) return color(0,0,0);
+    if(stoneColor.equals("grey")) return color(0,0,0);
+
+    else return color(128, 128, 128);
+  }
+  
+  
+    public int getTextureY(String texture) {
+if(texture.equals("smooth")) return 7;
+if(texture.equals("round")) return 6;
+if(texture.equals("waxy")) return 5;
+if(texture.equals("grainy")) return 4;
+if(texture.equals("rough")) return 3;
+if(texture.equals("jagged")) return 2;
+if(texture.equals("hard")) return 1;
+else return 4;
+  }
