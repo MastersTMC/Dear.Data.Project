@@ -1,0 +1,108 @@
+ArrayList<Stone> stones = new ArrayList<>(100);
+ArrayList<Star> stars = new ArrayList<>(80);
+boolean inverted = false;
+
+void setup() {
+  size(1250, 350, P3D);
+  surface.setTitle("Space Stones");
+  frameRate(60);
+
+  String[] dearDataLines = loadStrings("DearData5.0.md");
+  for (String e : dearDataLines) {
+    if (e.trim().length() == 0) continue;
+    String[] dataSplit = e.split(",");
+    if (dataSplit.length < 5) continue;
+    stones.add(new Stone(
+      int(dataSplit[0].trim()), dataSplit[1].trim(), int(dataSplit[2].trim()), dataSplit[3].trim(), dataSplit[4].trim()));
+  }
+  for (int i = 0; i < 500; i++) {
+    stars.add(new Star(random(-width, width * 2), random(-height, height * 2), random(0.5, 5), random(0.3, 1.5)));
+  }
+}
+
+void draw() {
+  pushMatrix();
+  translate(width/2 - mouseX, 0,0);  
+  
+  if (inverted == true) {
+    background(255, 255, 255);
+  } else {
+    background(0, 0, 0);
+  }
+
+
+  for (Star p : stars) {
+    p.x += p.speed;
+    if (p.x > width * 6) {
+      p.x = -width;
+    }
+
+    if (inverted) {
+      fill(0, 0, 0, 60);
+    } else {
+      fill(255, 255, 255, 60);
+    }
+    noStroke();
+    ellipse(p.x, p.y, p.size, p.size);
+  }
+
+
+  for (Stone s : stones) {
+    int x = (s.getNumber() -23 ) * 17;
+    int diameter = s.getSize() * 3;
+    int y = (500 - (getTextureY(s.getTexture()) * 50));
+
+    if (inverted) {
+      stroke(0, 0, 0);
+    } else {
+      stroke(255, 255, 255);
+    }
+    pushMatrix();
+    translate(x,y,0);
+    noStroke();
+    fill(getColorEllipse(s.getStoneColor()), 150);
+    sphere(diameter);
+    popMatrix();
+  }
+  popMatrix();
+}
+
+void mousePressed() {
+  inverted = !inverted;
+}
+
+
+
+color getColorEllipse(String stoneColor) {
+  if (stoneColor.equals("dark red")) return color(139,0,0);
+  if (stoneColor.equals("white")) return color(255,255,255);
+  if (stoneColor.equals("dark green")) return color(0,100,0);
+  if (stoneColor.equals("grey")) return color(125,125,125);
+  if (stoneColor.equals("dark grey")) return color(169,169,169);
+  if (stoneColor.equals("light grey")) return color(211,211,211);
+  if (stoneColor.equals("brown")) return color(210,105,30);
+  if (stoneColor.equals("red")) return color(255,0,0);
+  if (stoneColor.equals("tan")) return color(210,180,140);
+  if (stoneColor.equals("beige")) return color(245,245,220);
+  if (stoneColor.equals("light brown")) return color(181,101,29);
+  if (stoneColor.equals("black")) return color(30,30,30);
+  if (stoneColor.equals("lime")) return color(0,255,0);
+  if (stoneColor.equals("dark orange")) return color(255,140,0);
+  if (stoneColor.equals("green")) return color(0,128,0);
+  if (stoneColor.equals("pink")) return color(255,192,203);
+  if (stoneColor.equals("gold")) return color(215,215,0);
+  if (stoneColor.equals("yellow")) return color(255,255,0);
+  if (stoneColor.equals("dark brown")) return color(101,67,33);
+  return color(0,0,0);
+}
+
+int getTextureY(String texture) {
+  if (texture.equals("smooth")) return 7;
+  if (texture.equals("round")) return 6;
+  if (texture.equals("waxy")) return 5;
+  if (texture.equals("grainy")) return 4;
+  if (texture.equals("rough")) return 3;
+  if (texture.equals("jagged")) return 2;
+  if (texture.equals("hard")) return 1;
+  return 4;
+}   
